@@ -1,47 +1,130 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import emblaCarouselSvelte from "embla-carousel-svelte";
+  import Herosection from "./components/Herosection.svelte";
+  import AboutMe from "./components/AboutMe.svelte";
+  import Career from "./components/Career.svelte";
+  import Projects from "./components/Projects.svelte";
+  import Contact from "./components/Contact.svelte";
+  import ProgressBar from "./components/ProgressBar.svelte";
+
+  let emblaApi;
+  let options = { loop: false };
+  let sections = [Herosection, AboutMe, Career, Projects, Contact];
+
+  let scrollProgress = 0;
+  let scaleTween;
+  let scaleFactor = 0.1;
+  let opacityTween;
+  let opacityFactor = 0.6;
+
+  let slideRefs = [];
+
+  function onInit(event) {
+    emblaApi = event.detail;
+
+    scaleTween = scaleFactor * emblaApi.scrollSnapList().length;
+    opacityTween = opacityFactor * emblaApi.scrollSnapList().length;
+
+    emblaApi.on("reInit", () => {
+      updateProgress();
+      updateScale();
+      updateOpacity();
+    });
+
+    emblaApi.on("scroll", () => {
+      updateProgress();
+      updateScale();
+      updateOpacity();
+    });
+
+    emblaApi.on("slideFocus", () => {
+      updateProgress();
+      updateScale();
+      updateOpacity();
+    });
+
+    updateProgress();
+    updateScale();
+    updateOpacity();
+  }
+
+  function updateProgress() {
+    if (!emblaApi) return;
+    scrollProgress = Math.max(0, Math.min(1, emblaApi.scrollProgress())) * 100;
+  }
+
+  function updateScale() {
+    if (!emblaApi) return;
+    const scrollSnapList = emblaApi.scrollSnapList();
+    const slidesInView = emblaApi.slidesInView ? emblaApi.slidesInView() : [];
+
+    scrollSnapList.forEach((snap, snapIndex) => {
+      const slidesInSnap = [snapIndex];
+
+      slidesInSnap.forEach((slideIndex) => {
+        if (!slideRefs[slideIndex]) return;
+
+        let diffToTarget = snap - emblaApi.scrollProgress();
+
+        const tweenValue = 1 - Math.abs(diffToTarget * scaleTween);
+        const scale = Math.min(Math.max(tweenValue, 0), 1);
+
+        slideRefs[slideIndex].style.transform = `scale(${scale})`;
+      });
+    });
+  }
+
+  function updateOpacity() {
+    if (!emblaApi) return;
+
+    const scrollSnapList = emblaApi.scrollSnapList();
+
+    scrollSnapList.forEach((snap, index) => {
+      let diff = snap - emblaApi.scrollProgress();
+      const tweenValue = 1 - Math.abs(diff * opacityTween);
+      const opacity = Math.min(Math.max(tweenValue, 0), 1);
+
+      if (slideRefs[index]) {
+        slideRefs[index].style.opacity = opacity;
+      }
+    });
+  }
 </script>
 
-<main>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
+<div
+  class="carousel"
+  use:emblaCarouselSvelte={{ options }}
+  onemblaInit={onInit}
+>
+  <div class="carouselContainer">
+    {#each sections as section, i}
+      <div class="carouselSlide" bind:this={slideRefs[i]}>
+        <svelte:component this={section} />
+      </div>
+    {/each}
   </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
+  <ProgressBar progress={scrollProgress} />
+</div>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  .carousel {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 18px);
   }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+
+  .carouselContainer {
+    height: 100%;
+    display: flex;
   }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
+
+  .carouselSlide {
+    flex: 0 0 75%;
+    min-width: 0;
+    border: 1px solid white;
+    transition:
+      transform 0.1s ease,
+      opacity 0.15s ease;
   }
 </style>
