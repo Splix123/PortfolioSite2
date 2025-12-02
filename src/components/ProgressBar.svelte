@@ -11,10 +11,7 @@
 
 <style>
   .progress {
-    margin: 1.5rem 0 0.8rem 0;
     position: relative;
-    justify-self: center;
-    align-self: center;
     height: 0.6rem;
     width: 13rem;
     max-width: 90%;
@@ -25,7 +22,7 @@
   }
 
   .progressBar {
-    background-color: white;
+    background-color: var(--foreground);
     position: absolute;
     top: 0;
     bottom: 0;
