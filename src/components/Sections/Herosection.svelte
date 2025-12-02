@@ -1,7 +1,11 @@
 <script>
 </script>
 
-<h2>Hero Section</h2>
+<h1
+  class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center mt-20"
+>
+  Hero Section
+</h1>
 
 <style>
 </style>

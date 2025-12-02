@@ -7,6 +7,7 @@
   import Contact from "./Sections/Contact.svelte";
   import ProgressBar from "./ProgressBar.svelte";
   import Themeswitcher from "./Themeswitcher.svelte";
+  import { Separator } from "$lib/components/ui/separator/index.js";
 
   let emblaApi;
   let options = { loop: false };
@@ -105,6 +106,7 @@
   </div>
   <div class="carouselFooter">
     <ProgressBar progress={scrollProgress} />
+    <Separator class="" orientation="vertical" />
     <Themeswitcher />
   </div>
 </div>
@@ -129,6 +131,10 @@
     transition:
       transform 0.1s ease,
       opacity 0.15s ease;
+  }
+
+  .carouselSlide h1 {
+    text-align: center;
   }
 
   .carouselFooter {
