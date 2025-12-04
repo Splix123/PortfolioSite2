@@ -133,10 +133,6 @@
       opacity 0.15s ease;
   }
 
-  .carouselSlide h1 {
-    text-align: center;
-  }
-
   .carouselFooter {
     display: flex;
     margin: 0.8rem 0 0 0;
