@@ -98,11 +98,13 @@
   onemblaInit={onInit}
 >
   <div class="carouselContainer">
+    <div class="carouselSpacer" aria-hidden="true"></div>
     {#each sections as section, i}
       <div class="carouselSlide" bind:this={slideRefs[i]}>
         <svelte:component this={section} />
       </div>
     {/each}
+    <div class="carouselSpacer" aria-hidden="true"></div>
   </div>
   <div class="carouselFooter">
     <ProgressBar progress={scrollProgress} />
@@ -122,6 +124,11 @@
   .carouselContainer {
     height: 100%;
     display: flex;
+  }
+
+  .carouselSpacer {
+    flex: 0 0 12.5%;
+    pointer-events: none;
   }
 
   .carouselSlide {
