@@ -118,14 +118,14 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 18px);
+    height: 100vh;
   }
 
   .carouselContainer {
-    height: 100%;
+    flex: 1 1 auto;
     display: flex;
+    min-height: 0;
   }
-
   .carouselSpacer {
     flex: 0 0 12.5%;
     pointer-events: none;
@@ -138,11 +138,16 @@
     transition:
       transform 0.1s ease,
       opacity 0.15s ease;
+    height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .carouselFooter {
     display: flex;
-    margin: 0.8rem 0 0 0;
+    margin: 0.8rem 0;
     justify-content: center;
     align-items: center;
     gap: 2rem;
