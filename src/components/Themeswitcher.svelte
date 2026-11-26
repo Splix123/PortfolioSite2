@@ -34,10 +34,9 @@
 </Button>
 
 <style>
-  /* Dauer und Kurve des Theme-Crossfades */
   :global(::view-transition-old(root)),
   :global(::view-transition-new(root)) {
-    animation-duration: 0.6s;
+    animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
   }
 </style>
