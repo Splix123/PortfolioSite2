@@ -16,12 +16,11 @@
   const projects: Project[] = [
     {
       title: "Portfolio Site",
-      description:
-        "This website — Svelte 5, Tailwind and custom WebGL backgrounds.",
+      description: "This website — Svelte 5, Tailwind, Vite & more.",
       icon: Code,
       image:
         "https://images.unsplash.com/photo-1520930528075-4ea5ead759f5?w=900&q=80&auto=format&fit=crop",
-      link: "https://github.com/Splix123",
+      link: "https://github.com/Splix123/PortfolioSite2",
     },
     {
       title: "Game Project",
