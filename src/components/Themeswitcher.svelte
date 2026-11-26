@@ -2,11 +2,28 @@
   import SunIcon from "@lucide/svelte/icons/sun";
   import MoonIcon from "@lucide/svelte/icons/moon";
 
-  import { toggleMode } from "mode-watcher";
+  import { toggleMode, mode } from "mode-watcher";
   import { Button } from "$lib/components/ui/button/index.js";
+
+  function switchTheme() {
+    const apply = () => {
+      toggleMode();
+      mode.current;
+    };
+
+    if (
+      !document.startViewTransition ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      apply();
+      return;
+    }
+
+    document.startViewTransition(apply);
+  }
 </script>
 
-<Button onclick={toggleMode} variant="outline" size="icon">
+<Button onclick={switchTheme} variant="outline" size="icon">
   <SunIcon
     class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 !transition-all dark:-rotate-90 dark:scale-0"
   />
@@ -17,4 +34,10 @@
 </Button>
 
 <style>
+  /* Dauer und Kurve des Theme-Crossfades */
+  :global(::view-transition-old(root)),
+  :global(::view-transition-new(root)) {
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in-out;
+  }
 </style>
