@@ -259,3 +259,10 @@ body {
     scrollbar-color: var(--border) transparent;
   }
 }
+
+@media (pointer: fine) {
+  .blob-cursor-area,
+  .blob-cursor-area * {
+    cursor: none !important;
+  }
+}
