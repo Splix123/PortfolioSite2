@@ -106,7 +106,7 @@
   </div>
   <div class="carouselFooter">
     <ProgressBar progress={scrollProgress} />
-    <Separator class="" orientation="vertical" />
+    <Separator orientation="vertical" />
     <Themeswitcher />
   </div>
 </div>

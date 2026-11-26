@@ -2,9 +2,9 @@
 	import { cn } from "$lib/utils.js";
 	let {
 		ref = $bindable(null),
-		class: className,
+		class: className = undefined,
 		variant = "legend",
-		children,
+		children = undefined,
 		...restProps
 	} = $props();
 </script>
