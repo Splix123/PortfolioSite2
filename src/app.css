@@ -1,8 +1,13 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+/* -------------------------------- */
+/* Global                           */
+/* -------------------------------- */
 
 html,
 body {
@@ -12,101 +17,166 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  /* Light Mode */
+  --background: #f5f3f0;
+  --foreground: #171717;
+
+  --card: #ffffff;
+  --card-foreground: #171717;
+
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+
+  --primary: #b51f2e;
+  --primary-foreground: #ffffff;
+
+  --secondary: #ebe8e4;
+  --secondary-foreground: #171717;
+
+  --muted: #ebe8e4;
+  --muted-foreground: #626262;
+
+  /* shadcn accent: subtle hover surfaces */
+  --accent: #ebe8e4;
+  --accent-foreground: #171717;
+
+  --destructive: #b51f2e;
+
+  --border: #d8d4cf;
+  --input: #d8d4cf;
+  --ring: #b51f2e;
+
+  /* Custom portfolio colors */
+  --surface: #ffffff;
+  --surface-hover: #ebe8e4;
+
+  --brand: #b51f2e;
+  --brand-hover: #8f1825;
+
+  --text-primary: #171717;
+  --text-secondary: #626262;
+  --text-muted: #858585;
+
+  /* Charts */
+  --chart-1: #b51f2e;
+  --chart-2: #8f1825;
+  --chart-3: #454545;
+  --chart-4: #a5a5a5;
+  --chart-5: #d8d4cf;
+
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #171717;
+  --sidebar-primary: #b51f2e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ebe8e4;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #d8d4cf;
+  --sidebar-ring: #b51f2e;
 }
+
+/* -------------------------------- */
+/* Dark Mode                        */
+/* -------------------------------- */
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: #080808;
+  --foreground: #f5f3f0;
+
+  --card: #1a1a1a;
+  --card-foreground: #f5f3f0;
+
+  --popover: #1a1a1a;
+  --popover-foreground: #f5f3f0;
+
+  --primary: #b51f2e;
+  --primary-foreground: #f5f3f0;
+
+  --secondary: #292929;
+  --secondary-foreground: #f5f3f0;
+
+  --muted: #292929;
+  --muted-foreground: #a5a5a5;
+
+  --accent: #292929;
+  --accent-foreground: #f5f3f0;
+
+  --destructive: #e63846;
+
+  --border: #454545;
+  --input: #454545;
+  --ring: #e63846;
+
+  /* Custom portfolio colors */
+  --surface: #1a1a1a;
+  --surface-hover: #292929;
+
+  --brand: #b51f2e;
+  --brand-hover: #e63846;
+
+  --text-primary: #f5f3f0;
+  --text-secondary: #a5a5a5;
+  --text-muted: #777777;
+
+  /* Charts */
+  --chart-1: #e63846;
+  --chart-2: #b51f2e;
+  --chart-3: #a5a5a5;
+  --chart-4: #777777;
+  --chart-5: #454545;
+
+  /* Sidebar */
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #f5f3f0;
+  --sidebar-primary: #e63846;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #292929;
+  --sidebar-accent-foreground: #f5f3f0;
+  --sidebar-border: #454545;
+  --sidebar-ring: #e63846;
 }
 
+/* -------------------------------- */
+/* Tailwind v4 Theme                */
+/* -------------------------------- */
+
 @theme inline {
+  /* Border radius */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* shadcn semantic colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+
   --color-destructive: var(--destructive);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -115,14 +185,51 @@ body {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Custom portfolio colors */
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  /* Typography */
+  --font-display: "Bebas Neue", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Manrope", sans-serif;
 }
+
+/* -------------------------------- */
+/* Base styles                      */
+/* -------------------------------- */
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-body text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
   }
 
   /* Scrollbars – Chrome, Edge, Safari */

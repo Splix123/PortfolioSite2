@@ -6,7 +6,7 @@
 </script>
 
 <BlobCursor />
-<ModeWatcher />
+<ModeWatcher synchronousModeChanges />
 <Carousel />
 
 <style>
