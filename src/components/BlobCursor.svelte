@@ -287,7 +287,7 @@
 
 		let renderer: THREE.WebGLRenderer;
 		try {
-			renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, premultipliedAlpha: true });
+			renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, premultipliedAlpha: true });
 		} catch {
 			return undefined;
 		}
@@ -462,8 +462,13 @@
 				}
 				physical.needsUpdate = true;
 			}
+			// Only render the (expensive) 2048² VSM shadow map when shadows are actually shown.
+			renderer.shadowMap.enabled = s.shadow;
+			key.castShadow = s.shadow;
 			blobFlat.color.copy(tint);
 			sprayFlat.color.copy(tint);
+			blobFlat.needsUpdate = true;
+			sprayFlat.needsUpdate = true;
 			const ink = s.material === 'ink';
 			blob.material = ink ? blobFlat : blobPhysical;
 			spray.material = ink ? sprayFlat : sprayPhysical;

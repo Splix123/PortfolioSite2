@@ -32,7 +32,8 @@
         curvature={0.25}
         persistence={0.4}
         changeOnClick={false}
-        dpr={1}
+        dpr={0.75}
+        fps={30}
       />
     {/if}
   </div>
