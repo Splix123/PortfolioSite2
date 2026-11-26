@@ -28,9 +28,9 @@
 	import { cn } from "$lib/utils.js";
 	let {
 		ref = $bindable(null),
-		class: className,
+		class: className = undefined,
 		orientation = "vertical",
-		children,
+		children = undefined,
 		...restProps
 	} = $props();
 </script>
