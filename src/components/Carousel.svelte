@@ -1,5 +1,5 @@
 <script>
-  import emblaCarouselSvelte from "embla-carousel-svelte";
+  import useEmblaCarousel from "embla-carousel-svelte";
   import Herosection from "./Sections/Herosection.svelte";
   import AboutMe from "./Sections/AboutMe.svelte";
   import Career from "./Sections/Career.svelte";
@@ -94,7 +94,7 @@
 
 <div
   class="carousel"
-  use:emblaCarouselSvelte={{ options, plugins: [] }}
+  use:useEmblaCarousel={{ options, plugins: [] }}
   onemblaInit={onInit}
 >
   <div class="carouselContainer">
@@ -108,7 +108,7 @@
   </div>
   <div class="carouselFooter">
     <ProgressBar progress={scrollProgress} />
-    <Separator class="" orientation="vertical" />
+    <Separator orientation="vertical" />
     <Themeswitcher />
   </div>
 </div>
